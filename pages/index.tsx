@@ -6,11 +6,6 @@ import Image from '../assets/images/1.jpg';
 const Home: React.FC = () => {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
 
         {/* <img src={Image} /> */}
