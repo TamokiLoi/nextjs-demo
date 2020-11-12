@@ -114,6 +114,25 @@
   height: 1em;
 }
 
+.upload {
+  padding: 15px 30px;
+  border: 2px solid #333;
+  color: #fff;
+  background-color: #333;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.upload:hover {
+  background-color: rgba(51, 51, 51, 0.699);
+}
+.uploadHidden {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  left: '-1000px';
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
