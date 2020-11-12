@@ -1,13 +1,26 @@
 import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import Button from '../../../components/Button';
 import styles from '../../../styles/Home.module.css';
+import useConstructor from '../../../custom-hook/useConstructor';
 
 const LifeCycleHook = () => {
 
-    // similar constructor
+    // similar constructor: type 2
     useMemo(() => {
-        console.log('constructor new');
+        console.log('constructor 2');
     }, []);
+
+    // create constructor: type 3
+    const isRunHook = useRef(false);
+    if (isRunHook.current == false) {
+        console.log('constructor 3');
+        isRunHook.current = true;
+    }
+
+    // create constructor: type 4
+    useConstructor(() => {
+        console.log('constructor 4');
+    })
 
     const [counter, setCounter] = useState(0);
     const [visible, setVisible] = useState(true);
@@ -47,12 +60,25 @@ const LifeCycleHook = () => {
             <p>{fullName}</p>
             <hr style={{ width: '100%' }} />
             <div>
-                <input type="file" ref={inputFileEl} className={styles.uploadHidden}/>
+                {/* type 1 */}
+                {/* <input type="file" ref={inputFileEl} className={styles.uploadHidden}/>
                 <button
                     className={styles.upload}
                     onClick={() => {
                         console.log(inputFileEl.current);
                         inputFileEl.current.click();
+                    }}>
+                    Upload Image
+                </button> */}
+
+                {/* type 2 */}
+                <input type="file" className={styles.uploadHidden} />
+                <button
+                    className={styles.upload}
+                    onClick={() => {
+                        console.log(inputFileEl.current);
+                        const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+                        input.click();
                     }}>
                     Upload Image
                 </button>
